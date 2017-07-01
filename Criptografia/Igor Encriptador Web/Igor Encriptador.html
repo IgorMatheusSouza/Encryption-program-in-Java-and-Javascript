@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="icon" href="files/ico.png">    
+<link href="files/bootstrap.min.css" rel="stylesheet"> 
+<link href="files/criptografia.css" rel="stylesheet">    
+</head>
+    
+    
+    
+<body>
+
+    <img src="files/Web-Encrip-background.jpg" id="bg">
+    
+<div id="main-container">
+    
+    <img id="logo" src="files/logo-igorEncrip.png">
+    
+    
+   <div class="input-group " id="my-input">
+            
+ <input type="text" class="form-control" id="input" placeholder="Digite aqui..." aria-label="">
+    </div>
+    
+    <button class="btn btn-info" onclick="crip()" id="my-buttom">Criptografar</button>
+    <button class="btn btn-info" id="my-buttom2" onclick="descrip()">Descriptografar</button>
+    
+
+    
+    
+    
+ 
+    
+    <div id="text-out"></div>
+    
+    
+    
+</div>
+    
+    
+    <script>
+       
+        if(window.innerWidth<480){
+            document.getElementById("bg").src="mobile-Encrip-background.jpg";
+        }
+        
+function crip(){
+        var inputValue=document.getElementById("input").value;
+        var text=inputValue.toLowerCase();
+     
+    if(text==""){
+        return
+    }
+        var letras=["a"," ","e","c","d"];
+        var letrasCrip=["","","","",""];
+        var norepeat=[11,11,11,11,11];
+       
+      
+       for(var i=0;i<letras.length;i++){
+         var alea = aleatorio();
+         var valid=true;
+         
+         
+            for(var i2=0 ; i2<5 ; i2++){
+                if(alea==norepeat[i2]){
+                  valid=false;
+                  --i;
+                }    
+            }
+         norepeat[i]=alea;
+           
+           
+       if(valid){
+             if(alea==0){
+                 letrasCrip[i]="!";
+             };
+              if(alea==1){
+                 letrasCrip[i]="Ó";
+             };
+              if(alea==2){
+                 letrasCrip[i]="D";             
+             };
+              if(alea==3){
+                 letrasCrip[i]="%";
+             }
+              if(alea==4){
+                 letrasCrip[i]="W";
+             }
+              if(alea==5){
+                 letrasCrip[i]="G";
+             };
+              if(alea==6){
+                 letrasCrip[i]="H";
+             };
+              if(alea==7){
+                 letrasCrip[i]="P";
+             };
+              if(alea==8){
+                 letrasCrip[i]="J";
+             };
+              if(alea==9){
+                 letrasCrip[i]="Â";
+             };
+              if(alea==10){
+                 letrasCrip[i]="U";
+             };
+           
+            
+          } 
+           
+       
+     }
+    
+    
+       for(var i=0; i<10;i++){
+           
+        text=text.replace("ú","u");
+
+        text=text.replace("ó","o");
+       }
+      
+      for(var i=0; i<100;i++){
+      
+        text=text.replace("a",letrasCrip[0]);
+        text=text.replace(" ",letrasCrip[1]);
+        text=text.replace("e",letrasCrip[2]);
+        text=text.replace("c",letrasCrip[3]);
+        text=text.replace("d",letrasCrip[4]);
+      }
+        
+    for(var i=0; i<100;i++){
+        text=text.replace("0","_");
+        text=text.replace("1","C");
+        text=text.replace("2","=");
+        text=text.replace("3","K");
+        text=text.replace("4","Q");  
+        text=text.replace("5",";");
+        text=text.replace("6","E");
+        text=text.replace("7","L");
+        text=text.replace("8","Y");
+        text=text.replace("9","T");
+        text=text.replace("ã","R");
+        text=text.replace("ç","3");
+        text=text.replace("á","I");
+        text=text.replace("à","O");
+        text=text.replace("í","A");
+        text=text.replace("õ","Ñ");
+    }
+    
+     for(var i=0; i<100;i++){
+        text=text.replace("b","Ú");
+        text=text.replace("f","S");
+        text=text.replace("g","<");
+        text=text.replace("h","2");
+        text=text.replace("i",">");
+        text=text.replace("j","F");
+        text=text.replace("l","0");
+        text=text.replace("k","6");
+        text=text.replace("m","Ç");
+        text=text.replace("n","-");
+        text=text.replace("o","4");
+        text=text.replace("p","1");
+        text=text.replace("q","X");
+        text=text.replace("r","9");
+        text=text.replace("s","V");
+        text=text.replace("t","B");
+        text=text.replace("u","5");
+        text=text.replace("v","M");
+        text=text.replace("x",":");
+        text=text.replace("w","]");
+        text=text.replace("y","ü");
+        text=text.replace("z","É");
+        text=text.replace(",","Z");
+     }
+    
+    
+    
+        for(var i=0;i<5;i++){
+            if(i<3){
+                text=text.concat(letrasCrip[i]);
+                
+            }
+            
+            
+            if(i>2){
+                var aux=letrasCrip[i];
+                text=aux.concat(text);
+              
+            }
+        }
+        
+        
+    
+       text=text.toLowerCase();
+  
+    if(text.length<19 && window.innerWidth >700){
+        document.getElementById("text-out").style.fontSize="45px";
+    }
+        
+    inputValue=document.getElementById("input").value=text;
+    
+      document.getElementById("text-out").innerHTML=text;
+       
+}
+        
+        
+function descrip(){
+    var inputValue=document.getElementById("input").value;
+        var text=inputValue;
+          
+    if(text.length<6){
+        return
+    }
+        var id1=text.charAt(text.length-3);
+        var id2=text.charAt(text.length-2);
+        var id3=text.charAt(text.length-1);
+        var id4=text.charAt(1);
+        var id5=text.charAt(0);
+        
+        
+        text=text.substring(1,text.length);
+          
+        text=text.substring(1,text.length);
+         
+        text=text.substring(0,text.length-1);
+        
+        text=text.substring(0,text.length-1);
+        
+        text=text.substring(0,text.length-1);
+    
+        for(var i=0; i<100;i++){
+        text=text.replace(id1,"A");
+        text=text.replace(id2," ");
+        text=text.replace(id3,"E");
+        text=text.replace(id4,"C");
+        text=text.replace(id5,"D");
+        }
+       
+       for(var i=0; i<100;i++){
+       text=text.replace("3","Ç");
+        text=text.replace("ú","B");
+        text=text.replace("s","F");
+        text=text.replace("<","G");
+        text=text.replace("2","H"); 
+        text=text.replace(">","I");
+        text=text.replace("f","J");
+        text=text.replace("0","L");
+        text=text.replace("6","K");
+        text=text.replace("ç","M");
+        text=text.replace("-","N");
+        text=text.replace("4","O");
+        text=text.replace("1","P");
+        text=text.replace("x","Q");
+        text=text.replace("9","R");
+        text=text.replace("v","S");
+        text=text.replace("b","T");
+        text=text.replace("5","U");
+        text=text.replace("m","V");
+        text=text.replace(":","X");
+        text=text.replace("]","W");
+        text=text.replace("^","Y");
+        text=text.replace("é","Z");
+        
+        text=text.replace("z",",");
+       }
+        
+        for(var i=0; i<100;i++){
+            text=text.replace("_","0");
+         text=text.replace("c","1");
+        text=text.replace("=","2");
+        text=text.replace("k","3");
+        text=text.replace("q","4");
+        text=text.replace(";","5");
+        text=text.replace("e","6");
+        text=text.replace("l","7");
+        text=text.replace("y","8");
+        text=text.replace("t","9");
+        text=text.replace("r","ã");
+        
+        text=text.replace("i","á");
+        text=text.replace("o","à");
+        text=text.replace("a","í");
+        text=text.replace("ñ","õ");
+        text=text.replace("ü","Y");
+        }
+        text=text.toLowerCase();
+       
+    if(text.length<19 && window.innerWidth >700){
+        document.getElementById("text-out").style.fontSize="45px";
+    }
+        
+        inputValue=document.getElementById("input").value=text;
+    
+      document.getElementById("text-out").innerHTML=text;
+       
+       
+    
+}
+        
+        
+ function aleatorio(){
+        var de=Math.round(Math.random()*10);
+        var i=parseInt(de);
+        
+        return i;
+    }    
+        
+        
+        
+        
+    </script>
+    
+    
+</body>
+
+
+
+</html>
